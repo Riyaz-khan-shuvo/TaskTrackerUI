@@ -1,0 +1,292 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+
+@section Style {
+    <style>
+     
+            #heroSlider img {
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+        .category{
+            background: #f7ecec;
+        }
+
+       .category .card img {
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+       .category .card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+       .category .card-body h6 {
+            color: #198754;
+        }
+
+       .feature-product .card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+       .feature-product .card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+      .feature-product  .card-body h6 {
+            color: #198754;
+        }
+
+       .feature-product .btn-success:hover {
+            background-color: #157347;
+        }
+        .why-choose{
+            background: #f7ecec;
+        }
+
+        .why-choose img {
+            transition: transform 0.3s;
+        }
+
+        .why-choose .p-4:hover img {
+            transform: scale(1.1);
+        }
+
+        .why-choose .p-4:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+
+    </style>
+}
+
+<section class="container mt-3">
+    <div id="heroSlider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="~/Content/images/slider1.jpg" class="d-block w-100" alt="Organic Food">
+                @* <div class="carousel-caption d-none d-md-block">
+                <h1 class="fw-bold">প্রাকৃতিক খাদ্য</h1>
+                <p>সুস্থ জীবনের জন্য ১০০% অর্গানিক পণ্য</p>
+                <a href="#" class="btn btn-success btn-lg">এখনই কিনুন</a>
+            </div> *@
+            </div>
+
+            <div class="carousel-item">
+                <img src="~/Content/images/slider2.jpg" class="d-block w-100" alt="Vegetables">
+                @* <div class="carousel-caption d-none d-md-block">
+                <h1 class="fw-bold">তাজা শাক-সবজি</h1>
+                <p>কৃষকের মাঠ থেকে সরাসরি আপনার টেবিলে</p>
+                <a href="#" class="btn btn-success btn-lg">দেখুন পণ্য</a>
+            </div> *@
+            </div>
+
+            <div class="carousel-item">
+                <img src="~/Content/images/slider1.jpg" class="d-block w-100" alt="Lifestyle">
+                @* <div class="carousel-caption d-none d-md-block">
+                <h1 class="fw-bold">হোম ও লাইফস্টাইল</h1>
+                <p>প্রাকৃতিক, সুন্দর ও স্টাইলিশ ঘরের জন্য</p>
+                <a href="#" class="btn btn-success btn-lg">শপিং শুরু করুন</a>
+            </div> *@
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+</section>
+
+<section class="py-5 container category mt-3">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">ক্যাটাগরি অনুযায়ী কেনাকাটা করুন</h2>
+            <p class="text-muted"> আমাদের জৈব ও পরিবেশবান্ধব সব পণ্যের ক্যাটাগরি বিস্তারিত</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Category Card 1 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <img src="~/Content/images/category2.png" class="card-img-top" alt="তাজা ফল">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">তাজা ফল</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Card 2 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <img src="~/Content/images/category1.png" class="card-img-top" alt="জৈব সবজি">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">জৈব সবজি</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Card 3 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <img src="~/Content/images/category2.png" class="card-img-top" alt="ঘর ও জীবনধারা">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">ঘর ও জীবনধারা</h6>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Card 4 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm text-center h-100">
+                    <img src="~/Content/images/category1.png" class="card-img-top" alt="সৌন্দর্য ও সুস্থতা">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">সৌন্দর্য ও সুস্থতা</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 container feature-product">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">জনপ্রিয় পণ্যসমূহ</h2>
+            <p class="text-muted">আমাদের সবচেয়ে জনপ্রিয় ও প্রাকৃতিক পণ্যসমূহ</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Product Card 1 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRDQPjtXnFzP3gjABS8wPsMwb8tLatM1t0ng&s" class="card-img-top" alt="অর্গানিক আপেল">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">অর্গানিক আপেল</h6>
+                        <p class="text-success fw-bold mb-1">৳ ৪৫০</p>
+                        <button class="btn btn-success btn-sm px-3 w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_IjOiPxkpz-0V9UCzKmAZae1EFiGsYd5RA&s" class="card-img-top" alt="তাজা ব্রকলি">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">তাজা ব্রকলি</h6>
+                        <p class="text-success fw-bold mb-1">৳ ৩২০</p>
+                        <button class="btn btn-success btn-sm px-3 w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzkX_38ZOfvCadqDhaf0DkBUlFLkB4J4iq2g&s" class="card-img-top" alt="হার্বাল শ্যাম্পু">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">হার্বাল শ্যাম্পু</h6>
+                        <p class="text-success fw-bold mb-1">৳ ৬৮০</p>
+                        <button class="btn btn-success btn-sm px-3 w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2o4Y9qoERNTc5VByZMYG0dZp_4hZhnqQlQA&s" class="card-img-top" alt="অর্গানিক মধু">
+                    <div class="card-body">
+                        <h6 class="fw-semibold">অর্গানিক মধু</h6>
+                        <p class="text-success fw-bold mb-1">৳ ৮৯৯</p>
+                        <button class="btn btn-success btn-sm px-3 w-100">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 container why-choose">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">কেন দিগন্ত ফুড ?</h2>
+            <p class="text-muted">আমাদের প্রধান সুবিধা ও বিশ্বস্ততার কারণসমূহ</p>
+        </div>
+
+        <div class="row g-4 text-center">
+            <!-- Feature 1 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="p-4 bg-white shadow-sm rounded">
+                    <i class="fas fa-leaf text-success mb-3" style="font-size: 50px;"></i>
+                    <h6 class="fw-semibold">১০০% প্রাকৃতিক পণ্য</h6>
+                    <p class="text-muted small">শুধুমাত্র প্রাকৃতিক ও জৈব উপাদান ব্যবহার করা হয়</p>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="p-4 bg-white shadow-sm rounded">
+                    <i class="fas fa-tractor text-success mb-3" style="font-size: 50px;"></i>
+                    <h6 class="fw-semibold">কৃষকের কাছ থেকে সরাসরি</h6>
+                    <p class="text-muted small">পণ্য সরাসরি কৃষক থেকে আপনার টেবিলে পৌঁছায়</p>
+                </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="p-4 bg-white shadow-sm rounded">
+                    <i class="fas fa-truck text-success mb-3" style="font-size: 50px;"></i>
+                    <h6 class="fw-semibold">দ্রুত ডেলিভারি</h6>
+                    <p class="text-muted small">আপনার অর্ডার দ্রুত এবং নিরাপদে পৌঁছে যায়</p>
+                </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="col-md-3 col-sm-6">
+                <div class="p-4 bg-white shadow-sm rounded">
+                    <i class="fas fa-recycle text-success mb-3" style="font-size: 50px;"></i>
+                    <h6 class="fw-semibold">পরিবেশবান্ধব প্যাকেজিং</h6>
+                    <p class="text-muted small">আমরা পরিবেশের প্রতি যত্নশীল প্যাকেজ ব্যবহার করি</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+
+    <script>
+        const myCarousel = document.querySelector('#heroSlider');
+        const carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 4000, // 4 seconds
+            ride: 'carousel'
+        });
+    </script>
+
+
+
+
+}

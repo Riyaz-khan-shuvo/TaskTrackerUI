@@ -1,0 +1,232 @@
+*{
+    margin:0;
+    padding:0;
+}
+body, main {
+    margin: 0;
+    padding: 0;
+}
+main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+.validation-summary-errors ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0; 
+}
+#drawerMenu {
+    display: none;
+}
+
+/* Hamburger */
+#menuToggle {
+    background: transparent;
+    border: none;
+    color: #2E7D32;
+    font-size: 22px;
+}
+
+/* Kendo horizontal menu */
+#mainMenu li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+#mainMenu a {
+    color: #2E7D32;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    #mainMenu a:hover {
+        color: #6BBE45;
+    }
+
+/* Cart / Wishlist Icons */
+.menu-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+    .menu-icons a {
+        color: #2E7D32;
+        font-size: 20px;
+        position: relative;
+    }
+
+        .menu-icons a:hover {
+            color: #6BBE45;
+        }
+
+    .menu-icons .badge {
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background-color: #dc3545;
+        color: white;
+        font-size: 10px;
+        padding: 2px 5px;
+        border-radius: 50%;
+    }
+
+/* Drawer Menu Styling */
+#drawerMenu {
+    display: none;
+    background-color: #fff;
+    width: 280px;
+    padding: 20px;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.15);
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+    z-index: 999; /* higher than banner/content */
+}
+
+    /* Drawer menu items */
+    #drawerMenu ul.k-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        #drawerMenu ul.k-menu li {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        /* Parent links */
+        #drawerMenu ul.k-menu > li > a {
+            color: #2E7D32;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 6px 12px; /* smaller padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+            #drawerMenu ul.k-menu > li > a:hover {
+                background-color: #E8F5E9;
+            }
+
+            /* Arrow icon for submenu */
+            #drawerMenu ul.k-menu > li > a .arrow {
+                transition: transform 0.3s ease;
+            }
+
+        /* Submenu items */
+        #drawerMenu ul.k-menu li ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+            display: none; /* hidden by default */
+        }
+
+            #drawerMenu ul.k-menu li ul li a {
+                color: #4B4B4B;
+                font-size: 16px;
+                font-weight: 500;
+                padding: 8px 15px;
+                display: block;
+                border-radius: 6px;
+                transition: background 0.3s ease, color 0.3s ease;
+            }
+
+                #drawerMenu ul.k-menu li ul li a:hover {
+                    background-color: #C8E6C9;
+                    color: #1B5E20;
+                }
+
+        /* Rotate arrow when submenu is open */
+        #drawerMenu ul.k-menu li.open > a .arrow {
+            transform: rotate(90deg);
+        }
+
+        /* Arrow icon */
+        #drawerMenu ul.k-menu > li > a .arrow {
+            transition: transform 0.3s ease;
+            font-size: 12px; /* smaller arrow */
+        }
+/* Submenu Styling */
+.my-nav .dropdown-menu {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 10px 0;
+    min-width: 220px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: none;
+}
+
+/* Submenu items */
+.my-nav .dropdown-item {
+    color: #2E7D32;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    /* Hover effect */
+    .my-nav .dropdown-item:hover {
+        color: #ffffff;
+        background: #2E7D32;
+        padding-left: 25px; /* slight movement on hover */
+        border-radius: 8px;
+    }
+
+    /* Optional: arrow for submenus (if nested later) */
+    .my-nav .dropdown-item::after {
+        content: "\f105"; /* font-awesome right arrow */
+        font-family: "FontAwesome";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    /* show arrow on hover */
+    .my-nav .dropdown-item:hover::after {
+        opacity: 1;
+        right: 10px;
+    }
+
+footer a:hover {
+    color: #00b36b !important;
+}
+
+footer h6, footer h4 {
+    color: #fff;
+}
+
+footer input::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #mainMenu {
+        display: none;
+    }
+
+    #drawerMenu {
+        background-color: #ffffff;
+        width: 250px;
+        padding: 20px;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        display: block;
+    }
+
+    .menu-icons {
+        display: flex;
+    }
+}
+

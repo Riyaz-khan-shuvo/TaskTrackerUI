@@ -1,0 +1,134 @@
+﻿@model TaskTracker.Models.Auth.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+@section Style {
+    <style>
+        .auth-section {
+            background: linear-gradient(135deg, #f8fff9, #eaf7eb);
+            min-height: calc(100vh - 80px);
+            padding-top: 60px; /* 👈 This gives clean spacing under navbar */
+            padding-bottom: 60px;
+            margin-top: 0 !important;
+        }
+
+
+        .auth-card {
+            background: #fff;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+            /* .auth-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(46, 125, 50, 0.15);
+            } */
+
+        .auth-form input.form-control {
+            border: 1px solid #dcdcdc;
+            padding: 10px 14px;
+            transition: all 0.2s ease;
+        }
+
+            .auth-form input.form-control:focus {
+                border-color: #2E7D32;
+                box-shadow: 0 0 0 0.15rem rgba(46, 125, 50, 0.2);
+            }
+
+        .auth-form button:hover {
+            background-color: #256628 !important;
+        }
+
+        header .navbar {
+            margin-bottom: 0 !important;
+        }
+    </style>
+}
+
+<section class="auth-section py-5 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0 rounded-4 auth-card p-4">
+                    <div class="text-center mb-4">
+                        <img src="~/Content/adminlte/dist/img/logo.png" alt="EcoBazar" style="height: 40px;">
+                        <h2 class="fw-bold mt-3" style="color: #2E7D32;">Create Account</h2>
+                        <p class="text-muted">Join us today! It’s quick and easy</p>
+                    </div>
+
+                    <form asp-action="Register" asp-controller="Account" method="post" asp-antiforgery="true" class="auth-form">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        
+                        <div class="mb-3">
+                            <label asp-for="FirstName" class="form-label fw-semibold">First Name</label>
+                            <input asp-for="FirstName" class="form-control rounded-3" placeholder="Enter your first name"  />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LastName" class="form-label fw-semibold">Last Name</label>
+                            <input asp-for="LastName" class="form-control rounded-3" placeholder="Enter your last name"  />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold">Email address</label>
+                            <input asp-for="Email" class="form-control rounded-3" placeholder="Enter your email"  />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label fw-semibold">Password</label>
+                            <input asp-for="Password" type="password" class="form-control rounded-3" placeholder="Enter your password"  />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label fw-semibold">Confirm Password</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control rounded-3" placeholder="Re-enter your password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+
+                        <button type="submit" class="btn w-100 py-2 text-white fw-semibold shadow-sm" style="background-color: #2E7D32; border-radius: 10px;">
+                            Sign Up
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <p class="text-muted mb-0">
+                                Already have an account?
+                                <a asp-controller="Account" asp-action="Login" style="color:#2E7D32; font-weight:600;">Sign In</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            };
+
+            @if (TempData["Success"] != null)
+            {
+                    <text>toastr.success('@TempData["Success"]');</text>
+            }
+
+            @if (TempData["Error"] != null)
+            {
+                    <text>toastr.error('@TempData["Error"]');</text>
+            }
+        });
+    </script>
+}

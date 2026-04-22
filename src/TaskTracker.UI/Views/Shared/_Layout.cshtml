@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EcoBazar </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Kendo UI CSS -->
+    <link href="~/Content/assets/kendoui2021/kendo/style/kendo.common.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/kendoui2021/kendo/style/kendo.blueopal.min.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <link href="~/Content/js/toastr.min.css" rel="stylesheet" />
+    @await RenderSectionAsync("Style", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow">
+            <div class="container d-flex justify-content-between my-nav">
+                <div>
+                    <button id="menuToggle" class="k-rpanel-toggle k-button k-button-icontext" type="button">
+                        <span class="k-icon k-i-menu"></span>
+                    </button>
+                </div>
+                <!-- center: Logo -->
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Content/adminlte/dist/img/logo.png" alt="EcoBazar" style="height: 45px;">
+                </a>
+
+                <!-- Center: Kendo Menu -->
+                <!-- Center: Bootstrap Dropdown Menu -->
+                <div class="d-none d-sm-block flex-grow-1 text-center">
+                    <!-- Desktop & Drawer Menu -->
+                    <ul class="nav justify-content-center">
+                        <!-- প্রাকৃতিক খাদ্য (Organic Food) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="organicMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                প্রাকৃতিক খাদ্য
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="organicMenu">
+                                <li><a class="dropdown-item" href="#">মধু</a></li>
+                                <li><a class="dropdown-item" href="#">খেজুর</a></li>
+                                <li><a class="dropdown-item" href="#">আম</a></li>
+                                <li><a class="dropdown-item" href="#">নারকেল</a></li>
+                                <li><a class="dropdown-item" href="#">বাদাম ও বাদামের পণ্য</a></li>
+                                <li><a class="dropdown-item" href="#">অন্যান্য ফলমূল</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- শাক-সবজি (Vegetables & Greens) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="vegetablesMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                শাক-সবজি
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="vegetablesMenu">
+                                <li><a class="dropdown-item" href="#">সবুজ শাক</a></li>
+                                <li><a class="dropdown-item" href="#">মৌসুমি সবজি</a></li>
+                                <li><a class="dropdown-item" href="#">অর্গানিক সবজি</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- ড্রিংকস ও পানীয় (Beverages & Drinks) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="beveragesMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ড্রিংকস ও পানীয়
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="beveragesMenu">
+                                <li><a class="dropdown-item" href="#">প্রাকৃতিক জুস</a></li>
+                                <li><a class="dropdown-item" href="#">হারবাল চা</a></li>
+                                <li><a class="dropdown-item" href="#">মসলা চা</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- স্ন্যাকস ও স্বাস্থ্যকর খাবার (Snacks & Healthy Foods) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-success fw-semibold" href="#" id="snacksMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                স্ন্যাকস ও স্বাস্থ্যকর খাবার
+                            </a>
+                            <ul class="dropdown-menu border-0 shadow-sm" aria-labelledby="snacksMenu">
+                                <li><a class="dropdown-item" href="#">শুকনো ফল</a></li>
+                                <li><a class="dropdown-item" href="#">স্বাস্থ্যকর স্ন্যাকস</a></li>
+                                <li><a class="dropdown-item" href="#">গুড় ও মিষ্টি</a></li>
+                            </ul>
+                        </li>
+
+                       
+                    </ul>
+
+                
+                </div>
+
+                <!-- Right: Cart & Wishlist -->
+                <div class="d-none d-sm-flex align-items-center menu-icons">
+                    <a asp-controller="Cart" asp-action="Index" title="Cart" class="me-3">
+                        <span class="k-icon k-i-cart"></span>
+                        <span class="badge">2</span>
+                    </a>
+                    <a asp-controller="Wishlist" asp-action="Index" title="Wishlist">
+                        <span class="k-icon k-i-heart"></span>
+                        <span class="badge">1</span>
+                    </a>
+                </div>
+
+                <!-- Mobile: Hamburger + Icons -->
+                <div class="d-flex align-items-center d-sm-none">
+                    <div class="menu-icons me-5">
+                        <a asp-controller="Cart" asp-action="Index" title="Cart" class="me-3">
+                            <span class="k-icon k-i-cart"></span>
+                            <span class="badge">2</span>
+                        </a>
+                        <a asp-controller="Wishlist" asp-action="Index" title="Wishlist">
+                            <span class="k-icon k-i-heart"></span>
+                            <span class="badge">1</span>
+                        </a>
+                    </div>
+                </div>
+
+              
+            </div>
+        </nav>
+
+        <!-- Drawer for Mobile -->
+        <div id="drawerMenu">
+            <!-- Top: Logo + Close button -->
+            <div class="drawer-header d-flex justify-content-between align-items-center p-3 border-bottom">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Content/adminlte/dist/img/logo.png" alt="EcoBazar" style="height: 40px;">
+                </a>
+                <button id="drawerClose" class="btn btn-link p-2 m-0 text-dark text-decoration-none">&times;</button>
+            </div>
+            <ul class="k-menu k-menu-vertical">
+                <!-- প্রাকৃতিক খাদ্য (Organic Food) -->
+                <li>
+                    <a href="javascript:void(0)">প্রাকৃতিক খাদ্য <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">মধু</a></li>
+                        <li><a href="#">খেজুর</a></li>
+                        <li><a href="#">আম</a></li>
+                        <li><a href="#">নারকেল</a></li>
+                        <li><a href="#">বাদাম ও বাদামের পণ্য</a></li>
+                        <li><a href="#">অন্যান্য ফলমূল</a></li>
+                    </ul>
+                </li>
+
+                <!-- শাক-সবজি (Vegetables & Greens) -->
+                <li>
+                    <a href="javascript:void(0)">শাক-সবজি <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">সবুজ শাক</a></li>
+                        <li><a href="#">মৌসুমি সবজি</a></li>
+                        <li><a href="#">অর্গানিক সবজি</a></li>
+                    </ul>
+                </li>
+
+                <!-- ড্রিংকস ও পানীয় (Beverages & Drinks) -->
+                <li>
+                    <a href="javascript:void(0)">ড্রিংকস ও পানীয় <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">প্রাকৃতিক জুস</a></li>
+                        <li><a href="#">হারবাল চা</a></li>
+                        <li><a href="#">মসলা চা</a></li>
+                    </ul>
+                </li>
+
+                <!-- স্ন্যাকস ও স্বাস্থ্যকর খাবার (Snacks & Healthy Foods) -->
+                <li>
+                    <a href="javascript:void(0)">স্ন্যাকস ও স্বাস্থ্যকর খাবার <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">শুকনো ফল</a></li>
+                        <li><a href="#">স্বাস্থ্যকর স্ন্যাকস</a></li>
+                        <li><a href="#">গুড় ও মিষ্টি</a></li>
+                    </ul>
+                </li>
+
+                <!-- দুগ্ধজাত পণ্য (Dairy Products) -->
+                <li>
+                    <a href="javascript:void(0)">দুগ্ধজাত পণ্য <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">দুধ</a></li>
+                        <li><a href="#">ঘি</a></li>
+                        <li><a href="#">দই ও ছানা</a></li>
+                    </ul>
+                </li>
+
+                <!-- হোম ও লাইফস্টাইল (Home & Lifestyle) -->
+                <li>
+                    <a href="javascript:void(0)">হোম ও লাইফস্টাইল <span class="arrow">&#9654;</span></a>
+                    <ul>
+                        <li><a href="#">রান্নার উপকরণ</a></li>
+                        <li><a href="#">প্রাকৃতিক সৌন্দর্য পণ্য</a></li>
+                        <li><a href="#">হ্যান্ডমেড ক্রাফটস</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </header>
+
+        <main >
+            @RenderBody()
+        </main>
+    <footer class="bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row gy-4">
+                <!-- Brand & Description -->
+                <div class="col-md-4">
+                    <h4 class="fw-bold text-success mb-3">Diganto Food</h4>
+                    <p class="small text-muted">
+                        Shopping smarter, living better. Discover 100% organic and eco-friendly products for a sustainable lifestyle.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-light fs-5"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-light fs-5"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-2 col-6">
+                    <h6 class="fw-semibold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Shop</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-md-3 col-6">
+                    <h6 class="fw-semibold mb-3">Customer Service</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-muted text-decoration-none">My Account</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Order Tracking</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Returns & Refunds</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-md-3">
+                    <h6 class="fw-semibold mb-3">Join Our Newsletter</h6>
+                    <p class="small text-muted">Get the latest offers and updates directly in your inbox.</p>
+                    <form class="d-flex">
+                        <input type="email" class="form-control form-control-sm me-2" placeholder="Enter your email">
+                        <button type="submit" class="btn btn-success btn-sm">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <hr class="border-secondary mt-4 mb-3">
+
+            <div class="text-center small text-muted">
+                © @DateTime.Now.Year Diganto Food. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/Content/assets/kendoui2021/kendo/kendo.all.min.js"></script>
+    <script src="~/Content/AdminLte/plugins/toastr/toastr.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

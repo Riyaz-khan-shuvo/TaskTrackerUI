@@ -1,0 +1,166 @@
+﻿@using TaskTracker.Models;
+@model TaskTracker.Models.RoleMenuViewModel
+@{
+    ViewData["Title"] = "Role Menu Create Edit";
+}
+
+@{
+    var type = Model.Type;
+    var url = type == "User Group" ? "/SetUp/MenuAuthorization/UserGroup" : "/SetUp/MenuAuthorization/RoleMenu";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@type Wise Menu Entry</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li id="btnBack"><img src="~/Content/css/ButtonsIcons/back-icon.png" title="Click for Go Back" /></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-header p-2">
+            <button class="button btnRoleMenuSave sslSave" type="button">Submit</button>
+        </div>
+    </div>
+
+    <form id="frm_RoleMenu" asp-action="" method="post">
+        <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">@type Wise Menu Entry</h3>
+            </div>
+
+            <div class="card-body">
+
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="Operation" type="hidden" />
+                <input asp-for="UserGroupId" type="hidden" />
+                <input asp-for="UserGroupName" type="hidden" />
+                <input asp-for="RoleId" class="UserRoleId form-control form-control-sm" type="hidden" />
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label>@type</label>
+                        <input asp-for="RoleName" class="form-control form-control-sm" autocomplete="off" readonly />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">@type Wise Menu Details</h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="Tablescroll">
+                <div class="clearfix">&nbsp;</div>
+
+                <table class="table table-bordered table-striped table-sm" id="MenuAccessLists">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%; text-align:center;">
+                                <input type="checkbox" class="chkAll" /> Action
+                            </th>
+                            <th hidden style="width: 15%;">Id</th>
+                            <th style="width: 30%; text-align:center;">Menu Name</th>
+                            <th style="width: 10%; text-align:center;">List</th>
+                            <th style="width: 10%; text-align:center;">Insert</th>
+                            <th style="width: 10%; text-align:center;">Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="MenuAccessBody">
+                        @if (Model != null)
+                        {
+                            for (int i = 0; i < Model.RoleMenuList.Count; i++)
+                            {
+                                var item = Model.RoleMenuList[i];
+                                <tr class="tablerow" id="menuRow_@item.MenuId">
+                                    <!-- Main selection checkbox -->
+                                    <td style="text-align:center;">
+                                        <input type="checkbox" id="@item.ParentId" class=" @item.MenuId mainCheckbox form-control form-control-sm dSelected" name="IsChecked" value="@item.IsChecked" @(item.IsChecked ? "checked" : "") />
+
+                                    </td>
+
+                                    <!-- Hidden fields for MenuId and ParentId -->
+                                    <td hidden>@item.ParentId</td>
+                                    <td hidden>@item.MenuId</td>
+
+                                    <!-- Menu Name -->
+                                    <td>@item.MenuName</td>
+
+                                    <!-- Operation checkboxes -->
+                                    <td style="text-align:center;">
+                                        <label style="cursor:pointer;">
+                                            <input type="checkbox"
+                                                   name="List"
+                                                   value="true"
+                                                   @(item.List ? "checked" : "") />
+                                            List
+                                        </label>
+                                    </td>
+
+                                    <td style="text-align:center;">
+                                        <label style="cursor:pointer;">
+                                            <input type="checkbox"
+                                                   name="Insert"
+                                                   value="true"
+                                                   @(item.Insert ? "checked" : "") />
+                                            Insert
+                                        </label>
+                                    </td>
+
+                                    <td style="text-align:center;">
+                                        <label style="cursor:pointer;">
+                                            <input type="checkbox"
+                                                   name="Delete"
+                                                   value="true"
+                                                   @(item.Delete ? "checked" : "") />
+                                            Delete
+                                        </label>
+                                    </td>
+
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header p-2">
+            <button id="roleMenuSave" class="button btnRoleMenuSave sslSave" type="button">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/Services/CommonAjaxService.js"></script>
+    <script src="/js/Controllers/MenuAuthorizationController.js"></script>
+    <script>
+        $(document).ready(function () {
+            MenuAuthorizationController.init();
+        });
+    </script>
+}

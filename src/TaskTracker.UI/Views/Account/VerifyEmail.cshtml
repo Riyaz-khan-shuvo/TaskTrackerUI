@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Email Verification";
+    var isSuccess = ViewBag.IsSuccess != null && (bool)ViewBag.IsSuccess;
+    var message = ViewBag.Message as string ?? "";
+}
+
+@section Style {
+    <style>
+        .verify-container {
+            max-width: 480px;
+            margin: 80px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .verify-container h2 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .verify-message {
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .verify-success {
+            background-color: #e7f9ef;
+            color: #0b7b3b;
+            border: 1px solid #b5ebc9;
+        }
+
+        .verify-error {
+            background-color: #fde8e8;
+            color: #b30000;
+            border: 1px solid #f5b6b6;
+        }
+
+        .btn-login {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 25px;
+            background-color: #0b7b3b;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .btn-login:hover {
+            background-color: #096831;
+        }
+
+        .verify-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+    </style>
+}
+
+<div class="verify-container">
+    @if (isSuccess)
+    {
+        <div class="verify-icon">✅</div>
+        <h2>Email Verified!</h2>
+        <div class="verify-message verify-success">
+            @message
+        </div>
+        <a href="@Url.Action("Login", "Account")" class="btn-login">Go to Login</a>
+    }
+    else
+    {
+        <div class="verify-icon">❌</div>
+        <h2>Verification Failed</h2>
+        <div class="verify-message verify-error">
+            @message
+        </div>
+        <a href="@Url.Action("Register", "Account")" class="btn-login" style="background-color:#c00;">Back to Register</a>
+    }
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

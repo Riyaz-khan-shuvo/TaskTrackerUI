@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Verify Your Email";
+}
+
+@section Style {
+    <style>
+        .check-email-section {
+            background: linear-gradient(135deg, #f8fff9, #eaf7eb);
+            min-height: calc(100vh - 80px);
+            padding: 80px 0;
+        }
+
+        .check-email-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .check-email-card img {
+                height: 90px;
+                margin-bottom: 20px;
+            }
+
+            .check-email-card h2 {
+                color: #2E7D32;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .check-email-card p {
+                color: #555;
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+
+            .check-email-card a {
+                color: #fff;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            #resend{
+            color: #2E7D32;
+            }
+                .check-email-card a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+}
+
+<section class="check-email-section d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="check-email-card">
+                    <img src="~/Content/adminlte/dist/img/logo.png" alt="EcoBazar" style="height: 40px;">
+                    <h2>Check Your Email</h2>
+                    <p>
+                        We've sent a verification link to <strong>@ViewBag.Email</strong>.<br />
+                        Please check your inbox (and spam folder) to verify your email.
+                    </p>
+                    @* <p class="mt-4 text-muted">
+                        Didn’t receive the email?
+                        <a href="javascript:void(0)" id="resend" class="disabled">Resend</a>
+                        <span id="timer" class="ms-2 text-muted">Please wait 30 seconds before requesting again</span>
+                    </p>
+                    @Html.AntiForgeryToken() *@
+
+
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-success mt-3 px-4 py-2" style="border-radius:10px;">
+                        Back to Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+   <script>
+                      var resendLink = $("#resend");
+        var timerSpan = $("#timer");
+        var countdown = 30;
+        var interval;
+
+        function startTimer() {
+            resendLink.addClass("disabled").css("pointer-events", "none");
+            updateTimerText();
+
+            interval = setInterval(function () {
+                countdown--;
+                updateTimerText();
+
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    resendLink.removeClass("disabled").css("pointer-events", "auto");
+                    timerSpan.text("You can now resend the verification email.");
+                }
+            }, 1000);
+        }
+
+        function updateTimerText() {
+            timerSpan.text("Please wait " + countdown + " second" + (countdown !== 1 ? "s" : "") + " before requesting again");
+        }
+
+        startTimer();
+
+        resendLink.on("click", function () {
+            if (resendLink.hasClass("disabled")) return;
+
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            $.ajax({
+                url: '/Account/ResendVerification',
+                type: 'POST',
+                data: {
+                    email: '@ViewBag.Email',
+                    __RequestVerificationToken: token
+                },
+                success: function (res) {
+                    if (res.status === "Success") {
+                        toastr.success(res.message);
+                        countdown = 30;
+                        clearInterval(interval);
+                        startTimer();
+                    } else {
+                        toastr.error(res.message || "Unable to resend verification email.");
+                    }
+                },
+                error: function () {
+                    toastr.error("Server error. Unable to send verification email. Try again later.");
+                }
+            });
+        });
+
+
+   </script>
+}
+
+

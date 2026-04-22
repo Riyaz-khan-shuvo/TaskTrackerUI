@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ApiClient\**" />
+    <Content Remove="ApiClient\**" />
+    <EmbeddedResource Remove="ApiClient\**" />
+    <None Remove="ApiClient\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+	  <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+	  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\js\Services\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Common\Controllers\" />
+    <Folder Include="Areas\Common\Data\" />
+    <Folder Include="Areas\Common\Models\" />
+    <Folder Include="Areas\Common\Views\" />
+    <Folder Include="Areas\Setup\Data\" />
+    <Folder Include="Areas\Setup\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Models.csproj" />
+    <ProjectReference Include="..\TaskTracker.Repo\TaskTracker.Repo.csproj" />
+    <ProjectReference Include="..\TaskTracker.Shared\TaskTracker.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

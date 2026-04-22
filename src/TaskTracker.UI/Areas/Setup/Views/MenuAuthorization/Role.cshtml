@@ -1,0 +1,54 @@
+﻿@using TaskTracker.Models;
+@model TaskTracker.Models.UserRoleViewModel
+@{
+    ViewData["Title"] = "User Role";
+}
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0"> User Role </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    @*<li class="breadcrumb-item"><a href="/MenuAuthorization/Role">Index</a></li>
+                    <li class="breadcrumb-item active">Index</li>*@
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header p-2">
+            <a asp-area="Setup" asp-controller="MenuAuthorization" asp-action="RoleUpsert" class="button NewButton addNewButton"> New</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">
+                List Of Data
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="RoleIndexDataList"></div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="/js/Services/CommonAjaxService.js"></script>
+    <script src="/js/Controllers/MenuAuthorizationController.js"></script>
+    <script>
+         $(document).ready(function () {
+            MenuAuthorizationController.init();
+        });
+    </script>
+}
+

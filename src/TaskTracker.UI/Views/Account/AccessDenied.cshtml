@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Access Denied";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Access Denied</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .denied-card {
+            background: #ffffff;
+            width: 420px;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .denied-icon {
+            font-size: 70px;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .denied-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        .denied-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 22px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="denied-card">
+        <div class="denied-icon">🚫</div>
+        <div class="denied-title">Access Denied</div>
+        <div class="denied-text">
+            You do not have permission to view this page.<br />
+        </div>
+        @if (ViewBag.UserRole != "Customer")
+        {
+            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="back-btn"> 📊 Go to Dashboard</a>
+        }
+        else
+        {
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="back-btn"> 🏠 Go to Home</a>
+        }
+
+    </div>
+
+</body>
+</html>
