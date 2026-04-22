@@ -1,7 +1,3 @@
-Here’s a **professional README.md** for your **TaskTrackerUI (ASP.NET Core MVC)** project. You can directly paste this into your repository:
-
----
-
 # 🧾 TaskTrackerUI – ASP.NET Core MVC Frontend
 
 ## 📌 Overview
