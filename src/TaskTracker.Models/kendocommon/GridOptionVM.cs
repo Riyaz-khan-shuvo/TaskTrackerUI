@@ -28,24 +28,11 @@ namespace TaskTracker.Models.kendocommon
                .ForMember(d => d.Vm, opt => opt.MapFrom(s => s.vm));
 
             // IncludeBase targets
-            //profile.CreateMap<GridOptions, GetBannerGridQuery>();
-            //profile.CreateMap<GridOptions, GetCategoryGridQuery>();
-            //profile.CreateMap<GridOptions, GetSubCategoryGridQuery>();
-            //profile.CreateMap<GridOptions, GetProductGridQuery>();
+            profile.CreateMap<GridOptions, GetTaskGridQuery>();
             profile.CreateMap<GridOptions, GetRoleGridQuery>();
 
-            // Final mappings
-            //profile.CreateMap<GridOptionVM, GetBannerGridQuery>()
-            //    .IncludeBase<GridOptionVM, GridOptions>();
-
-            //profile.CreateMap<GridOptionVM, GetCategoryGridQuery>()
-            //    .IncludeBase<GridOptionVM, GridOptions>();
-
-            //profile.CreateMap<GridOptionVM, GetSubCategoryGridQuery>()
-            //    .IncludeBase<GridOptionVM, GridOptions>();
-
-            //profile.CreateMap<GridOptionVM, GetProductGridQuery>()
-            //    .IncludeBase<GridOptionVM, GridOptions>();
+            profile.CreateMap<GridOptionVM, GetTaskGridQuery>()
+                .IncludeBase<GridOptionVM, GridOptions>();
 
             profile.CreateMap<GridOptionVM, GetRoleGridQuery>()
               .IncludeBase<GridOptionVM, GridOptions>();

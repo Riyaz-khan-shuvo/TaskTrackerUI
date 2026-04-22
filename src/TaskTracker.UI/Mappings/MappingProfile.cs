@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using System.Reflection;
 using TaskTracker.Models.kendocommon;
 using TaskTracker.Shared.Contracts;
-using System.Reflection;
 
 namespace TaskTracker.UI.Mappings
 {

@@ -8,9 +8,17 @@
 
   <ItemGroup>
     <Compile Remove="ApiClient\**" />
+    <Compile Remove="Areas\Setup\Data\**" />
+    <Compile Remove="Areas\Setup\Models\**" />
     <Content Remove="ApiClient\**" />
+    <Content Remove="Areas\Setup\Data\**" />
+    <Content Remove="Areas\Setup\Models\**" />
     <EmbeddedResource Remove="ApiClient\**" />
+    <EmbeddedResource Remove="Areas\Setup\Data\**" />
+    <EmbeddedResource Remove="Areas\Setup\Models\**" />
     <None Remove="ApiClient\**" />
+    <None Remove="Areas\Setup\Data\**" />
+    <None Remove="Areas\Setup\Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +35,6 @@
     <Folder Include="Areas\Common\Data\" />
     <Folder Include="Areas\Common\Models\" />
     <Folder Include="Areas\Common\Views\" />
-    <Folder Include="Areas\Setup\Data\" />
-    <Folder Include="Areas\Setup\Models\" />
   </ItemGroup>
 
   <ItemGroup>

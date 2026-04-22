@@ -95,7 +95,7 @@ try
     // Default route
     app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Account}/{action=Login}/{id?}");
 
     app.Run();
 }

@@ -18,7 +18,7 @@
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
 
-    <title>@ViewData["Title"] - Diganta Food  </title>
+    <title>@ViewData["Title"] - Task Tracker  </title>
 
     <link href="~/Content/css/v361bootstrap4-toggle.min.css" rel="stylesheet" />
 
@@ -141,8 +141,12 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     @* <script src="~/Content/AdminLte/js/pages/dashboard.js"></script> *@
 
+    <script src="~/js/Common/ValidationHelper.js"></script>
 
-   
+
+    @RenderSection("Scripts", required: false)
+
+
     <style>
 
         th[data-type="decimal"] {
@@ -305,8 +309,8 @@
         }
 
         /*.card-header {
-                    background: #bbdceb !important;
-                }*/
+                            background: #bbdceb !important;
+                        }*/
 
         /*///////////////////////////////////*/
         .bootstrap-switch {
@@ -452,7 +456,7 @@
                 <div class="" style="text-align: center !important; padding: 4px 0;">
                     <div class="">
                         <a href="#" target="_blank">
-                            @* <img src="~/Content/AdminLte/dist/img/logo.png" alt="Diganta Food Logo" class="logo" height="40"> *@
+                            @* <img src="~/Content/AdminLte/dist/img/logo.png" alt="Task Tracker Logo" class="logo" height="40"> *@
                         </a>
                         <p></p>
                     </div>
@@ -479,7 +483,7 @@
             <div class=" d-none d-sm-inline-block">
                 <strong>
                     Copyright &copy; 2024 - @DateTimeOffset.Now.ToString("yyyy")
-                    Diganta Food.
+                    Task Tracker.
                 </strong>
                 All rights reserved. &nbsp;&nbsp;
             </div>
@@ -499,8 +503,7 @@
 
     @* <script src="~/Content/AdminLte/plugins/jquery/jquery.min.js"></script> *@
 
-    
-    @RenderSection("Scripts", required: false)
+
 
 </body>
 

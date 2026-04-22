@@ -1,0 +1,136 @@
+﻿@using TaskTracker.Shared.ApiClients
+@model TaskItemModel
+
+@{
+    ViewBag.Title = "Task Create";
+}
+
+<style>
+    .k-dropdown-wrap .k-input {
+        line-height: 1.6em !important;
+    }
+</style>
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row my-3">
+            <div class="col-sm-6">
+                <h1 class="m-0">Task Entry</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li id="btnBack">
+                        <img src="~/Content/css/ButtonsIcons/back-icon.png"
+                             title="Click for Go Back"
+                             style="cursor:pointer" />
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <form id="Task_Form"
+          asp-action="Save"
+          asp-controller="Task"
+          asp-area="Setup"
+          method="post"
+          asp-antiforgery="true">
+
+        <div class="card card-secondary">
+            <div class="card-header">
+                <h3 class="card-title">Task Info</h3>
+            </div>
+
+            <div class="card-body">
+
+                <input asp-for="Id" type="hidden" />
+
+                <div class="form-group row">
+
+                    <div class="col-sm-4">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title"
+                               class="form-control form-control-sm"
+                               placeholder="Enter Task Title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label asp-for="DueDate" class="control-label"></label>
+                        <input asp-for="DueDate"
+                               type="date"
+                               class="form-control form-control-sm" />
+                        <span asp-validation-for="DueDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label asp-for="IsCompleted" class="control-label">Completed</label>
+
+                        <div class="Onoffbtn">
+                            <input asp-for="IsCompleted"
+                                   type="checkbox"
+                                   id="IsCompleted"
+                                   data-bootstrap-switch
+                                   data-on-color="success"
+                                   data-off-color="danger"
+                                   data-on-text="DONE"
+                                   data-off-text="PENDING" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-sm-12">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description"
+                                  class="form-control form-control-sm"
+                                  placeholder="Enter Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SAVE BUTTON -->
+        <div class="card">
+            <div class="d-flex justify-content-between">
+
+                <div class="card-header p-2">
+                    <button id="btnSave"
+                            type="submit"
+                            class="button btnsave sslSave">
+                        Save
+                    </button>
+                </div>
+
+                <div class="auditshow">
+                    <img src="~/Content/Images/audit.png"
+                         title="Click for Audit" />
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="/js/Services/CommonAjaxService.js"></script>
+    <script src="/js/Controllers/TaskController.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            ValidationHelper.apply();
+            TaskController.init();
+        });
+    </script>
+}

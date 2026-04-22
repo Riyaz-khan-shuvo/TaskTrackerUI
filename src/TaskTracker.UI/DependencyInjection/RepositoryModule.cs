@@ -1,7 +1,7 @@
 ﻿using Autofac;
+using System.Reflection;
 using TaskTracker.Repo.Implementations;
 using TaskTracker.Repo.Interfaces;
-using System.Reflection;
 
 namespace TaskTracker.UI.DependencyInjection
 {
@@ -18,6 +18,10 @@ namespace TaskTracker.UI.DependencyInjection
             builder.RegisterType<AccountRepo>()
                 .As<IAccountRepo>()
                      .InstancePerLifetimeScope();
+
+            builder.RegisterType<TaskRepo>()
+         .AsSelf()
+         .InstancePerLifetimeScope();
 
         }
     }
