@@ -1,7 +1,5 @@
 ﻿using Autofac;
 using AutoMapper;
-using TaskTracker.UI.Mappings;
-using System.Reflection;
 
 namespace TaskTracker.UI.DependencyInjection
 {
@@ -10,13 +8,13 @@ namespace TaskTracker.UI.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register(ctx =>
-            {
-                var config = new MapperConfiguration(cfg =>
-                {
-                    cfg.AddProfile<MappingProfile>(); // Applies all IMapFrom<> mappings
-                });
-                return config;
-            }).AsSelf().SingleInstance();
+  {
+      var config = new MapperConfiguration(cfg =>
+      {
+          cfg.AddMaps(AppDomain.CurrentDomain.GetAssemblies());
+      });
+      return config;
+  }).AsSelf().SingleInstance();
 
             builder.Register(ctx =>
             {

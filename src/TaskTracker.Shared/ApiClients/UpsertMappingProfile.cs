@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using TaskTracker.Shared.ApiClients;
 
-namespace Scholify.Shared.ApiClients
+namespace TaskTracker.Shared.ApiClients
 {
     public class UpsertMappingProfile : Profile
     {

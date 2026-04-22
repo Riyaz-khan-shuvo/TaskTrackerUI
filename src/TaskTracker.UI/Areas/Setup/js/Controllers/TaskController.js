@@ -2,6 +2,7 @@
 
     var init = function () {
         loadGrid();
+        loadPriorityIdCombo();
 
         $('#btnSave').on('click', function (e) {
             e.preventDefault();
@@ -77,6 +78,11 @@
                     width: 150
                 },
                 {
+                    field: "priorityName",
+                    title: "Priority",
+                    width: 150
+                },
+                {
                     field: "isCompleted",
                     title: "Status",
                     template: function (dataItem) {
@@ -86,6 +92,25 @@
                     },
                     width: 120
                 }
+            ]
+        });
+    }
+
+    function loadPriorityIdCombo() {
+
+        var selectedPriorityId = $("#PriorityId").val();
+
+        $("#PriorityId").kendoComboBox({
+            placeholder: "Select Priority",
+            dataTextField: "text",
+            dataValueField: "value",
+            suggest: true,
+            filter: "contains",
+            value: selectedPriorityId,   
+            dataSource: [
+                { text: "Low", value: 1 },
+                { text: "Medium", value: 2 },
+                { text: "High", value: 3 }
             ]
         });
     }
